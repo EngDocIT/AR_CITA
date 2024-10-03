@@ -1,1 +1,41 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL AR Project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/3.3.0/ar.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #ar-scene { position: absolute; top: 0; left: 0; }
+        #model-buttons {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .model-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;' vr-mode-ui="enabled: false" id="ar-scene">
+        <a-marker preset="hiro">
+            <a-entity id="ar-model" position="0 0 0" scale="0.05 0.05 0.05"></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+    <div id="model-buttons">
+        <button class="model-button" data-model="model1">Model 1</button>
+        <button class="model-button" data-model="model2">Model 2</button>
+        <button class="model-button" data-model="model3">Model 3</button>
+    </div>
+    <script src="ar-script.js"></script>
+</body>
+</html>
